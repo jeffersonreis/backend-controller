@@ -6,6 +6,7 @@ import { Repository } from 'typeorm';
 import { AccessHistory } from './access-history.entity';
 import { Vehicle } from '../vehicles/vehicle.entity';
 import { CloudinaryService } from '../cloudinary/cloudinary.service';
+import { GateService } from '../gate/gate.service';
 
 @Injectable()
 export class AccessHistoryService {
@@ -17,6 +18,8 @@ export class AccessHistoryService {
     private vehicleRepository: Repository<Vehicle>,
 
     private cloudinaryService: CloudinaryService,
+
+    private gateService: GateService,
   ) {}
 
   // Registra acesso se a placa pertencer a um veículo cadastrado
@@ -63,7 +66,7 @@ export class AccessHistoryService {
     console.log(`[AccessHistory] Acesso registrado para ${plate} (Usuário: ${vehicle.user.username})`);
 
     // Abre portão
-    // this.gateService.setCommand(true);
+    this.gateService.setCommand(true);
     console.log(`[AccessHistory] Comando de abertura do portão definido para true.`);
 
     return savedAccess;
