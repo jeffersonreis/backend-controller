@@ -66,7 +66,7 @@ export class AccessHistoryService {
     console.log(`[AccessHistory] Acesso registrado para ${plate} (Usuário: ${vehicle.user.username})`);
 
     // Abre portão
-    this.gateService.setCommand(true);
+    // this.gateService.setCommand(true);
     console.log(`[AccessHistory] Comando de abertura do portão definido para true.`);
 
     return savedAccess;
